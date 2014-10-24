@@ -1,11 +1,11 @@
 # coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'verbum/client/version'
+require "verbum/api/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "verbum-client"
-  spec.version       = Verbum::Client::VERSION
+  spec.name          = "verbum-api"
+  spec.version       = Verbum::Api::VERSION
   spec.authors       = ["Jens Ljungblad"]
   spec.email         = ["jens.ljungblad@gmail.com"]
   spec.summary       = %q{TODO: Write a short summary. Required.}
