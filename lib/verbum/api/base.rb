@@ -14,13 +14,7 @@ module Verbum
         end
 
         def get(url)
-          request_with_timeout(:get, url)
-        end
-
-        private
-
-        def request_with_timeout(method, url)
-          connection.send(method) do |request|
+          connection.send(:get) do |request|
             request.url(url)
             request.options[:timeout]      = 10
             request.options[:open_timeout] = 5
