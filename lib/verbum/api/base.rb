@@ -2,27 +2,34 @@ module Verbum
   module Api
     class Base
       class << self
-        def base_url
-          "http://localhost:3000/v1"
-        end
+        BASE_URL = "http://localhost:3000/v1"
+        TIMEOUT = 10
+        OPEN_TIMEOUT = 5
 
         def connection
-          @connection ||= Faraday.new(url: base_url) do |config|
+          @connection ||= Faraday.new(url: BASE_URL) do |config|
             config.adapter Faraday.default_adapter
-            config.response :logger
           end
         end
 
         def get(url)
-          connection.send(:get) do |request|
-            request.url(url)
-            request.options[:timeout]      = 10
-            request.options[:open_timeout] = 5
-          end
+          parse_response(
+            connection.send(:get) do |request|
+              request.url(url)
+              request.options[:timeout] = TIMEOUT
+              request.options[:open_timeout] = OPEN_TIMEOUT
+            end
+          )
         rescue Faraday::Error::TimeoutError
           fail "Connection timed out"
         rescue Faraday::Error::ConnectionFailed
           fail "Connection failed"
+        end
+
+        private
+
+        def parse_response(response)
+          JSON.parse(response.body)
         end
       end
     end
