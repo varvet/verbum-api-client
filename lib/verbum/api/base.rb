@@ -1,11 +1,11 @@
 module Verbum
   module Api
     class Base
-      class << self
-        BASE_URL = "http://localhost:3000/v1"
-        TIMEOUT = 10
-        OPEN_TIMEOUT = 5
+      BASE_URL = "http://localhost:3000/v1"
+      TIMEOUT = 10
+      OPEN_TIMEOUT = 5
 
+      class << self
         def connection
           @connection ||= Faraday.new(url: BASE_URL) do |config|
             config.adapter Faraday.default_adapter

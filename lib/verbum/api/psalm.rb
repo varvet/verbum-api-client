@@ -9,6 +9,10 @@ module Verbum
         @data["id"]
       end
 
+      def title
+        @data["title"]
+      end
+
       def number
         @data["number"]
       end
