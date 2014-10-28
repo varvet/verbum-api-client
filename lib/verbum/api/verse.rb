@@ -1,24 +1,24 @@
 module Verbum
   module Api
-    class Psalm < Base
+    class Verse < Base
       def self.resource
-        "psalms"
+        "verses"
       end
 
       def id
         @data["id"]
       end
 
-      def number
-        @data["number"]
+      def body
+        @data["body"]
       end
 
       def href
         @data["href"]
       end
 
-      def verses
-        Verse.find(@data["links"]["verses"])
+      def psalm
+        Psalm.find(@data["links"]["psalm"])
       end
     end
   end

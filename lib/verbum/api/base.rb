@@ -12,6 +12,22 @@ module Verbum
           end
         end
 
+        def resource; end
+
+        def all
+          get(resource)
+        end
+
+        def find(id)
+          if id.is_a?(Array)
+            get("#{resource}/#{id.join(",")}")
+          else
+            get("#{resource}/#{id}")
+          end
+        end
+
+        private
+
         def get(url)
           parse_response(
             connection.send(:get) do |request|
@@ -26,11 +42,19 @@ module Verbum
           fail "Connection failed"
         end
 
-        private
-
         def parse_response(response)
-          JSON.parse(response.body)
+          data = JSON.parse(response.body)[resource]
+
+          if data.is_a?(Array)
+            data.map { |d| new(d) }
+          else
+            new(data)
+          end
         end
+      end
+
+      def initialize(data)
+        @data = data
       end
     end
   end

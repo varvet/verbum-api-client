@@ -1,0 +1,538 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:3000/v1/psalms
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - "\"3a8c7fa81a6f6c1dbef60c4d43b28cf3\""
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 45e8cc26-cd92-43a2-952d-39d4c6a8eebc
+      X-Runtime:
+      - '0.008875'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.1.0/2013-12-25)
+      Date:
+      - Tue, 28 Oct 2014 09:16:26 GMT
+      Content-Length:
+      - '219'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: "{\"links\":{\"psalms.verses\":{\"href\":\"http://localhost:3000/v1/verses/{psalms.verses}\",\"type\":\"verses\"}},\"psalms\":[{\"id\":1,\"title\":\"Foo\",\"number\":\"1\",\"href\":\"http://localhost:3000/v1/psalms/1\",\"links\":{\"verses\":[1,2,3]}}]}"
+    http_version: 
+  recorded_at: Tue, 28 Oct 2014 09:16:26 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/v1/verses
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - "\"744590bd5f1aa5fa93ce13ca8bd4dc81\""
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - f38a054c-bfe3-4c2f-b3a5-4cf73ed2766a
+      X-Runtime:
+      - '0.025813'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.1.0/2013-12-25)
+      Date:
+      - Tue, 28 Oct 2014 09:42:05 GMT
+      Content-Length:
+      - '395'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: "{\"links\":{\"verses.psalm\":{\"href\":\"http://localhost:3000/v1/psalms/{verses.psalm}\",\"type\":\"psalms\"}},\"verses\":[{\"id\":1,\"body\":\"Some
+        text\",\"href\":\"http://localhost:3000/v1/verses/1\",\"links\":{\"psalm\":1}},{\"id\":2,\"body\":\"Some
+        more text\",\"href\":\"http://localhost:3000/v1/verses/2\",\"links\":{\"psalm\":1}},{\"id\":3,\"body\":\"Some
+        other text\",\"href\":\"http://localhost:3000/v1/verses/3\",\"links\":{\"psalm\":1}}]}"
+    http_version: 
+  recorded_at: Tue, 28 Oct 2014 09:42:05 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/v1/verses
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - "\"744590bd5f1aa5fa93ce13ca8bd4dc81\""
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 1175155e-d40c-4f00-a306-827732511fc3
+      X-Runtime:
+      - '0.008078'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.1.0/2013-12-25)
+      Date:
+      - Tue, 28 Oct 2014 09:42:15 GMT
+      Content-Length:
+      - '395'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: "{\"links\":{\"verses.psalm\":{\"href\":\"http://localhost:3000/v1/psalms/{verses.psalm}\",\"type\":\"psalms\"}},\"verses\":[{\"id\":1,\"body\":\"Some
+        text\",\"href\":\"http://localhost:3000/v1/verses/1\",\"links\":{\"psalm\":1}},{\"id\":2,\"body\":\"Some
+        more text\",\"href\":\"http://localhost:3000/v1/verses/2\",\"links\":{\"psalm\":1}},{\"id\":3,\"body\":\"Some
+        other text\",\"href\":\"http://localhost:3000/v1/verses/3\",\"links\":{\"psalm\":1}}]}"
+    http_version: 
+  recorded_at: Tue, 28 Oct 2014 09:42:15 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/v1/verses
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - "\"744590bd5f1aa5fa93ce13ca8bd4dc81\""
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - c2b6387e-66ba-4a99-a1f3-1003e8bcdadc
+      X-Runtime:
+      - '0.008074'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.1.0/2013-12-25)
+      Date:
+      - Tue, 28 Oct 2014 09:42:20 GMT
+      Content-Length:
+      - '395'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: "{\"links\":{\"verses.psalm\":{\"href\":\"http://localhost:3000/v1/psalms/{verses.psalm}\",\"type\":\"psalms\"}},\"verses\":[{\"id\":1,\"body\":\"Some
+        text\",\"href\":\"http://localhost:3000/v1/verses/1\",\"links\":{\"psalm\":1}},{\"id\":2,\"body\":\"Some
+        more text\",\"href\":\"http://localhost:3000/v1/verses/2\",\"links\":{\"psalm\":1}},{\"id\":3,\"body\":\"Some
+        other text\",\"href\":\"http://localhost:3000/v1/verses/3\",\"links\":{\"psalm\":1}}]}"
+    http_version: 
+  recorded_at: Tue, 28 Oct 2014 09:42:20 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/v1/verses
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - "\"744590bd5f1aa5fa93ce13ca8bd4dc81\""
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 16198861-3fc5-4f7f-a04a-353c4eb8c7a2
+      X-Runtime:
+      - '0.008220'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.1.0/2013-12-25)
+      Date:
+      - Tue, 28 Oct 2014 09:42:40 GMT
+      Content-Length:
+      - '395'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: "{\"links\":{\"verses.psalm\":{\"href\":\"http://localhost:3000/v1/psalms/{verses.psalm}\",\"type\":\"psalms\"}},\"verses\":[{\"id\":1,\"body\":\"Some
+        text\",\"href\":\"http://localhost:3000/v1/verses/1\",\"links\":{\"psalm\":1}},{\"id\":2,\"body\":\"Some
+        more text\",\"href\":\"http://localhost:3000/v1/verses/2\",\"links\":{\"psalm\":1}},{\"id\":3,\"body\":\"Some
+        other text\",\"href\":\"http://localhost:3000/v1/verses/3\",\"links\":{\"psalm\":1}}]}"
+    http_version: 
+  recorded_at: Tue, 28 Oct 2014 09:42:40 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/v1/verses/1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - "\"7e6b4378a08d829c84574380465cd2e4\""
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - ad2823b1-95a1-4f8a-84c7-8258ebdedfcc
+      X-Runtime:
+      - '0.016164'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.1.0/2013-12-25)
+      Date:
+      - Tue, 28 Oct 2014 09:43:28 GMT
+      Content-Length:
+      - '200'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: "{\"links\":{\"verses.psalm\":{\"href\":\"http://localhost:3000/v1/psalms/{verses.psalm}\",\"type\":\"psalms\"}},\"verses\":{\"id\":1,\"body\":\"Some
+        text\",\"href\":\"http://localhost:3000/v1/verses/1\",\"links\":{\"psalm\":1}}}"
+    http_version: 
+  recorded_at: Tue, 28 Oct 2014 09:43:28 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/v1/verses/1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - "\"7e6b4378a08d829c84574380465cd2e4\""
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 42002010-38ca-4d23-b7bb-dc7653a5bcea
+      X-Runtime:
+      - '0.007188'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.1.0/2013-12-25)
+      Date:
+      - Tue, 28 Oct 2014 09:43:32 GMT
+      Content-Length:
+      - '200'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: "{\"links\":{\"verses.psalm\":{\"href\":\"http://localhost:3000/v1/psalms/{verses.psalm}\",\"type\":\"psalms\"}},\"verses\":{\"id\":1,\"body\":\"Some
+        text\",\"href\":\"http://localhost:3000/v1/verses/1\",\"links\":{\"psalm\":1}}}"
+    http_version: 
+  recorded_at: Tue, 28 Oct 2014 09:43:32 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/v1/verses/1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - "\"7e6b4378a08d829c84574380465cd2e4\""
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 65e83d09-21d6-407e-b674-85d1bcf71369
+      X-Runtime:
+      - '0.005964'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.1.0/2013-12-25)
+      Date:
+      - Tue, 28 Oct 2014 09:43:34 GMT
+      Content-Length:
+      - '200'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: "{\"links\":{\"verses.psalm\":{\"href\":\"http://localhost:3000/v1/psalms/{verses.psalm}\",\"type\":\"psalms\"}},\"verses\":{\"id\":1,\"body\":\"Some
+        text\",\"href\":\"http://localhost:3000/v1/verses/1\",\"links\":{\"psalm\":1}}}"
+    http_version: 
+  recorded_at: Tue, 28 Oct 2014 09:43:34 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/v1/psalms/1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - "\"c0aa9aff8f536402213ca3cbe2136360\""
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - ac1a2f0b-bbbb-40ca-bf1d-638ce2b4d5d6
+      X-Runtime:
+      - '0.013188'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.1.0/2013-12-25)
+      Date:
+      - Tue, 28 Oct 2014 09:45:12 GMT
+      Content-Length:
+      - '217'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: "{\"links\":{\"psalms.verses\":{\"href\":\"http://localhost:3000/v1/verses/{psalms.verses}\",\"type\":\"verses\"}},\"psalms\":{\"id\":1,\"title\":\"Foo\",\"number\":\"1\",\"href\":\"http://localhost:3000/v1/psalms/1\",\"links\":{\"verses\":[1,2,3]}}}"
+    http_version: 
+  recorded_at: Tue, 28 Oct 2014 09:45:12 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/v1/psalms/1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - "\"c0aa9aff8f536402213ca3cbe2136360\""
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 87416a95-41e0-4b69-8bfa-dd183903d5b2
+      X-Runtime:
+      - '0.008977'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.1.0/2013-12-25)
+      Date:
+      - Tue, 28 Oct 2014 09:46:05 GMT
+      Content-Length:
+      - '217'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: "{\"links\":{\"psalms.verses\":{\"href\":\"http://localhost:3000/v1/verses/{psalms.verses}\",\"type\":\"verses\"}},\"psalms\":{\"id\":1,\"title\":\"Foo\",\"number\":\"1\",\"href\":\"http://localhost:3000/v1/psalms/1\",\"links\":{\"verses\":[1,2,3]}}}"
+    http_version: 
+  recorded_at: Tue, 28 Oct 2014 09:46:05 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/v1/verses/1,2,3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - "\"744590bd5f1aa5fa93ce13ca8bd4dc81\""
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 3a86295a-29ca-439e-8d54-8e24e93f534b
+      X-Runtime:
+      - '0.021085'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.1.0/2013-12-25)
+      Date:
+      - Tue, 28 Oct 2014 09:46:06 GMT
+      Content-Length:
+      - '395'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: "{\"links\":{\"verses.psalm\":{\"href\":\"http://localhost:3000/v1/psalms/{verses.psalm}\",\"type\":\"psalms\"}},\"verses\":[{\"id\":1,\"body\":\"Some
+        text\",\"href\":\"http://localhost:3000/v1/verses/1\",\"links\":{\"psalm\":1}},{\"id\":2,\"body\":\"Some
+        more text\",\"href\":\"http://localhost:3000/v1/verses/2\",\"links\":{\"psalm\":1}},{\"id\":3,\"body\":\"Some
+        other text\",\"href\":\"http://localhost:3000/v1/verses/3\",\"links\":{\"psalm\":1}}]}"
+    http_version: 
+  recorded_at: Tue, 28 Oct 2014 09:46:06 GMT
+recorded_with: VCR 2.9.3
