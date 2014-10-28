@@ -1,37 +1,52 @@
 require_relative "../test_helper"
 
-class BaseTest < Minitest::Test
-  # def test_psalm_all_returns_array_of_psalms
-    # stub_request(:get, "http://localhost:3000/v1/psalms").to_return(
-    #   body: JSON.dump({
-    #     "links" => {
-    #       "psalms.verses" => {
-    #         "href" => "http://localhost:3000/v1/verses/{psalms.verses}",
-    #         "type" => "verses"}
-    #       },
-    #     "psalms" => [{
-    #       "id" => 1,
-    #       "title" => "Psalm",
-    #       "number" => "1",
-    #       "href" => "http://localhost:3000/v1/psalms/1",
-    #       "links" => {
-    #         "verses" => [1, 2, 3]
-    #       }
-    #     }]
-    #   }),
-    #   status: 200
-    # )
-    #
-    # psalms = Verbum::Api::Psalm.all
-    #
-    # assert_instance_of Array, psalms
-    # assert_instance_of Verbum::Api::Psalm, psalms[0]
-    # assert_equal "Psalm", psalms[0].title
+module Verbum
+  module Api
+    class Resource < Base
+      def self.resource
+        "resources"
+      end
+    end
 
-    # TODO: perhaps we should simply test resource classes by injecting data
-    # into their constructor, and make sure that works. then have separate
-    # tests for the base class that makes sure the currect data gets injected
-    # into constructors..?
-  # end
+    class BaseTest < Minitest::Test
+      def setup
+        stub_request(:get, "http://localhost:3000/v1/resources").to_return(body: JSON.dump(
+          resources: [{ id: 1 }]
+        ))
+        stub_request(:get, "http://localhost:3000/v1/resources/1").to_return(body: JSON.dump(
+          resources: { id: 1 }
+        ))
+        stub_request(:get, "http://localhost:3000/v1/resources/1,2,3").to_return(body: JSON.dump(
+          resources: [{ id: 1 }, { id: 2 }, { id: 3 }]
+        ))
+      end
 
+      def test_get_all_resources
+        resources = Resource.all
+
+        assert_instance_of Array, resources
+        assert_instance_of Resource, resources[0]
+      end
+
+      def test_get_single_resource
+        resource = Resource.find(1)
+
+        assert_instance_of Resource, resource
+      end
+
+      def test_get_multiple_resources_with_string
+        resources = Resource.find("1,2,3")
+
+        assert_instance_of Array, resources
+        assert_instance_of Resource, resources[0]
+      end
+
+      def test_get_multiple_resources_with_array
+        resources = Resource.find([1, 2, 3])
+
+        assert_instance_of Array, resources
+        assert_instance_of Resource, resources[0]
+      end
+    end
+  end
 end

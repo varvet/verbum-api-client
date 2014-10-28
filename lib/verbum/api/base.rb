@@ -20,7 +20,7 @@ module Verbum
 
         def find(id)
           if id.is_a?(Array)
-            get("#{resource}/#{id.join(",")}")
+            find(id.join(","))
           else
             get("#{resource}/#{id}")
           end
