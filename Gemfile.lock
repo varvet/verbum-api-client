@@ -18,6 +18,9 @@ GEM
     debugger-linecache (1.2.0)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+    metaclass (0.0.4)
+    mocha (1.1.0)
+      metaclass (~> 0.0.1)
     multipart-post (2.0.0)
     rake (10.3.2)
     safe_yaml (1.0.4)
@@ -32,6 +35,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.7)
   byebug (~> 3.5.1)
+  mocha (~> 1.1.0)
   rake (~> 10.0)
   verbum-api!
   webmock (~> 1.20.0)
