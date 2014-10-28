@@ -1,5 +1,7 @@
 # Verbum API
 
+[ ![Codeship Status for varvet/verbum-api-client](https://codeship.io/projects/8f6cdbb0-40e6-0132-61d2-361b888cab07/status)](https://codeship.io/projects/44012)
+
 A simple Ruby client for the Verbum API.
 
 ## Usage
