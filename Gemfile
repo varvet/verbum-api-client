@@ -6,6 +6,7 @@ gemspec
 group :test do
   gem "minitest", "~> 5.4.2"
   gem "mocha", "~> 1.1.0"
+  gem "simplecov", "~> 0.9.1"
   gem "webmock", "~> 1.20.0"
 end
 
