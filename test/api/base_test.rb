@@ -29,7 +29,7 @@ module Verbum
         resources = Resource.all
 
         assert_instance_of Array, resources
-        assert_equal 3, resources.length
+        assert_equal 5, resources.length
 
         resources.each_with_index do |resource, i|
           assert_instance_of Resource, resource
