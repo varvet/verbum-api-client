@@ -1,5 +1,4 @@
-require "byebug"
 require "minitest/autorun"
 require "mocha/mini_test"
-require "verbum/api"
 require "webmock/minitest"
+require "verbum/api"
