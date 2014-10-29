@@ -27,3 +27,5 @@ psalm.title
 psalm.href
 psalm.verses # Triggers a request to the verse resource
 ```
+
+### Contributing
