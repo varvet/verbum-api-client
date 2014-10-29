@@ -4,7 +4,7 @@
 
 A simple Ruby client for the Verbum API.
 
-## Usage
+### Usage
 
 To fetch all psalms:
 
@@ -28,7 +28,7 @@ psalm.href
 psalm.verses # Triggers a request to the verse resource
 ```
 
-## Contributing
+### Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/verbum-api/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
