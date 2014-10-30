@@ -2,7 +2,7 @@
 
 [ ![Codeship Status for varvet/verbum-api-client](http://img.shields.io/codeship/8f6cdbb0-40e6-0132-61d2-361b888cab07.svg)](https://codeship.io/projects/44012)
 
-![Coverage](https://morning-spire-4021.herokuapp.com/badges/varvet-verbum-api-coverage)
+![Coverage](https://morning-spire-4021.herokuapp.com/badges/varvet-verbum-api-client-coverage)
 
 A simple Ruby client for the Verbum API.
 
