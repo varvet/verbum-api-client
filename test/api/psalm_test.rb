@@ -10,13 +10,13 @@ module Verbum
           "number" => "1",
           "href" => "http://localhost:3000/v1/psalms/1",
           "links" => {
+            "authors" => [1, 2, 3],
+            "authorships" => [1, 2, 3],
+            "tags" => [1, 2, 3],
+            "theme" => 1,
             "verses" => [1, 2, 3]
           }
         })
-      end
-
-      def test_id
-        assert_equal 1, @psalm.id
       end
 
       def test_title
@@ -27,8 +27,20 @@ module Verbum
         assert_equal "1", @psalm.number
       end
 
-      def test_href
-        assert_equal "http://localhost:3000/v1/psalms/1", @psalm.href
+      def test_authors
+        Author.expects(:find).with([1, 2, 3]) && @psalm.authors
+      end
+
+      def test_authorships
+        Authorship.expects(:find).with([1, 2, 3]) && @psalm.authorships
+      end
+
+      def test_tags
+        Tag.expects(:find).with([1, 2, 3]) && @psalm.tags
+      end
+
+      def test_theme
+        Theme.expects(:find).with(1) && @psalm.theme
       end
 
       def test_verses

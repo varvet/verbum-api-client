@@ -67,6 +67,20 @@ module Verbum
           assert_equal @resources[i], resource.data
         end
       end
+
+      def test_id
+        resource = Resource.new({
+          "id" => 1
+        })
+        assert_equal 1, resource.id
+      end
+
+      def test_href
+        resource = Resource.new({
+          "href" => "http://localhost:3000/v1/resources/1"
+        })
+        assert_equal "http://localhost:3000/v1/resources/1", resource.href
+      end
     end
   end
 end
