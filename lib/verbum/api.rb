@@ -1,3 +1,4 @@
+require "active_support/all"
 require "faraday"
 require "json"
 require "verbum/api/base"

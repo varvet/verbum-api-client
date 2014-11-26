@@ -1,17 +1,8 @@
 module Verbum
   module Api
     class Tag < Base
-      def self.resource
-        "tags"
-      end
-
-      def name
-        @data["name"]
-      end
-
-      def psalms
-        Psalm.find(@data["links"]["psalms"])
-      end
+      attributes :name
+      associations :psalms
     end
   end
 end
