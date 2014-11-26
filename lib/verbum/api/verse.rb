@@ -5,16 +5,8 @@ module Verbum
         "verses"
       end
 
-      def id
-        @data["id"]
-      end
-
       def body
         @data["body"]
-      end
-
-      def href
-        @data["href"]
       end
 
       def psalm

@@ -5,10 +5,6 @@ module Verbum
         "psalms"
       end
 
-      def id
-        @data["id"]
-      end
-
       def title
         @data["title"]
       end
@@ -17,8 +13,20 @@ module Verbum
         @data["number"]
       end
 
-      def href
-        @data["href"]
+      def authors
+        Author.find(@data["links"]["authors"])
+      end
+
+      def authorships
+        Authorship.find(@data["links"]["authorships"])
+      end
+
+      def tags
+        Tag.find(@data["links"]["tags"])
+      end
+
+      def theme
+        Theme.find(@data["links"]["theme"])
       end
 
       def verses

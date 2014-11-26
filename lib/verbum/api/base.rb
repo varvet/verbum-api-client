@@ -56,6 +56,14 @@ module Verbum
       def initialize(data)
         @data = data
       end
+
+      def id
+        @data["id"]
+      end
+
+      def href
+        @data["href"]
+      end
     end
   end
 end

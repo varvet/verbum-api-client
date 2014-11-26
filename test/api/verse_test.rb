@@ -14,16 +14,8 @@ module Verbum
         })
       end
 
-      def test_id
-        assert_equal 1, @verse.id
-      end
-
       def test_body
         assert_equal "Lorem ipsum", @verse.body
-      end
-
-      def test_href
-        assert_equal "http://localhost:3000/v1/verses/1", @verse.href
       end
 
       def test_psalm
