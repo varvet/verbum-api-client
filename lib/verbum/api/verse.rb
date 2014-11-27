@@ -1,7 +1,7 @@
 module Verbum
   module Api
     class Verse < Base
-      attributes :body
+      attributes :body, :position
       associations :psalm
     end
   end

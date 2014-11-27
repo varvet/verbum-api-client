@@ -8,6 +8,7 @@ module Verbum
           "id" => 1,
           "title" => "Psalm",
           "number" => "1",
+          "addition" => true,
           "href" => "http://localhost:3000/v1/psalms/1",
           "links" => {
             "authors" => [1, 2, 3],
@@ -25,6 +26,10 @@ module Verbum
 
       def test_number
         assert_equal "1", @psalm.number
+      end
+
+      def test_addition
+        assert_equal true, @psalm.addition
       end
 
       def test_authors

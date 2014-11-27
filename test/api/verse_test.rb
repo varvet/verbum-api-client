@@ -7,6 +7,7 @@ module Verbum
         @verse = Verse.new({
           "id" => 1,
           "body" => "Lorem ipsum",
+          "position" => 1,
           "href" => "http://localhost:3000/v1/verses/1",
           "links" => {
             "psalm" => 1
@@ -16,6 +17,10 @@ module Verbum
 
       def test_body
         assert_equal "Lorem ipsum", @verse.body
+      end
+
+      def test_position
+        assert_equal 1, @verse.position
       end
 
       def test_psalm
