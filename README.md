@@ -7,7 +7,7 @@ A simple Ruby client for the Verbum API.
 
 ### Usage
 
-To fetch all psalms:
+All resources are queried in the same fashion. For instance, to fetch all psalms:
 
 ```ruby
 psalms = Verbum::Api::Psalm.all
@@ -19,6 +19,19 @@ To fetch a single psalm:
 psalm = Verbum::Api::Psalm.find(1)
 ```
 
+To fetch multiple psalms:
+
+```ruby
+psalms = Verbum::Api::Psalm.find([1,2,3]) # or
+psalms = Verbum::Api::Psalm.find("1,2,3")
+```
+
+To fetch psalms with additional parameters:
+
+```ruby
+psalm = Verbum::Api::Psalm.all(q: "foobar", sort: "title")
+```
+
 To access data on a psalm:
 
 ```ruby
@@ -26,7 +39,16 @@ psalm = Verbum::Api::Psalm.find(1)
 psalm.id
 psalm.title
 psalm.href
-psalm.verses # Triggers a request to the verse resource
 ```
+
+To access associated data on a psalm:
+
+```ruby
+psalm = Verbum::Api::Psalm.find(1)
+psalm.verses
+psalm.theme
+```
+
+This will trigger additional queries to the verse and theme resources.
 
 ### Contributing

@@ -6,15 +6,15 @@ module Verbum
       OPEN_TIMEOUT = 5
 
       class << self
-        def all
-          get(resource)
+        def all(params = {})
+          get(resource, params)
         end
 
-        def find(id)
+        def find(id, params = {})
           if id.is_a?(Array)
             find(id.join(","))
           else
-            get("#{resource}/#{id}")
+            get("#{resource}/#{id}", params)
           end
         end
 
@@ -50,10 +50,11 @@ module Verbum
 
         private
 
-        def get(url)
+        def get(url, params)
           parse_response(
             connection.send(:get) do |request|
               request.url(url)
+              request.params = params
               request.options[:timeout] = TIMEOUT
               request.options[:open_timeout] = OPEN_TIMEOUT
             end
