@@ -12,5 +12,11 @@ require "verbum/api/version"
 
 module Verbum
   module Api
+    mattr_accessor :wrappers
+    self.wrappers = {}
+
+    def self.configure
+      yield self
+    end
   end
 end

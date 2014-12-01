@@ -4,10 +4,6 @@ module Verbum
   module Api
     class Resource < Base
       attr_reader :data
-
-      def self.resource
-        "resources"
-      end
     end
 
     class BaseTest < Minitest::Test

@@ -27,7 +27,7 @@ module Verbum
         end
 
         def resource
-          self.name.demodulize.tableize
+          name.demodulize.tableize
         end
 
         def attributes(*attributes)
@@ -69,7 +69,17 @@ module Verbum
           data = JSON.parse(response.body)[resource]
 
           if data.is_a?(Array)
-            data.map { |d| new(d) }
+            data.map { |data| resource_from_data(data) }
+          else
+            resource_from_data(data)
+          end
+        end
+
+        def resource_from_data(data)
+          resource_name = name.demodulize.underscore.to_sym
+
+          if Verbum::Api.wrappers.key?(resource_name)
+            Verbum::Api.wrappers[resource_name].new(new(data))
           else
             new(data)
           end
