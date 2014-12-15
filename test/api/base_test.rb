@@ -10,13 +10,13 @@ module Verbum
       def setup
         @resources = [{ "id" => 1 }, { "id" => 2 }, { "id" => 3 }]
 
-        stub_request(:get, "http://localhost:3000/v1/resources").to_return(body: JSON.dump(
+        stub_request(:get, "http://api.verbumnovum.se/v1/resources").to_return(body: JSON.dump(
           "resources" => [@resources[0], @resources[1], @resources[2]]
         ))
-        stub_request(:get, "http://localhost:3000/v1/resources/1").to_return(body: JSON.dump(
+        stub_request(:get, "http://api.verbumnovum.se/v1/resources/1").to_return(body: JSON.dump(
           "resources" => @resources[0]
         ))
-        stub_request(:get, "http://localhost:3000/v1/resources/1,2").to_return(body: JSON.dump(
+        stub_request(:get, "http://api.verbumnovum.se/v1/resources/1,2").to_return(body: JSON.dump(
           "resources" => [@resources[0], @resources[1]]
         ))
       end
@@ -73,9 +73,9 @@ module Verbum
 
       def test_href
         resource = Resource.new({
-          "href" => "http://localhost:3000/v1/resources/1"
+          "href" => "http://api.verbumnovum.se/v1/resources/1"
         })
-        assert_equal "http://localhost:3000/v1/resources/1", resource.href
+        assert_equal "http://api.verbumnovum.se/v1/resources/1", resource.href
       end
     end
   end
