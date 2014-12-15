@@ -1,7 +1,7 @@
 module Verbum
   module Api
     class Base
-      BASE_URL = "http://localhost:3000/v1"
+      BASE_URL = "http://api.verbumnovum.se/v1"
       TIMEOUT = 10
       OPEN_TIMEOUT = 5
 
