@@ -40,6 +40,12 @@ module Verbum
         assert_equal @resources[0], resource.data
       end
 
+      def test_empty_resource_id
+        resource = Resource.find("")
+
+        assert resource.nil?
+      end
+
       def test_get_multiple_resources_with_string
         resources = Resource.find("1,2")
 
