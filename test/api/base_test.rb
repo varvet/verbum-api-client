@@ -4,7 +4,12 @@ module Verbum
   module Api
     class Resource < Base
       attr_reader :data
+      attributes :foo
+      associations :bar, :baz
     end
+
+    class Bar < Base; end
+    class Baz < Base; end
 
     class BaseTest < Minitest::Test
       def setup
@@ -82,6 +87,62 @@ module Verbum
           "href" => "http://api.verbumnovum.se/v1/resources/1"
         })
         assert_equal "http://api.verbumnovum.se/v1/resources/1", resource.href
+      end
+
+      def test_attribute
+        resource = Resource.new({
+          "id" => 1,
+          "foo" => "bar"
+        })
+        assert_equal "bar", resource.foo
+      end
+
+      def test_has_one_association
+        stub_request(:get, "http://api.verbumnovum.se/v1/bars/1").to_return(body: JSON.dump(
+          "bars" => { "id" => 1 }
+        ))
+
+        resource = Resource.new({
+          "id" => 1,
+          "links" => {
+            "bar" => 1
+          }
+        })
+        assert resource.bar.present?
+      end
+
+      def test_blank_has_one_association
+        resource = Resource.new({
+          "id" => 1,
+          "links" => {
+            "bar" => nil
+          }
+        })
+        assert_equal nil, resource.bar
+      end
+
+      def test_has_many_association
+        stub_request(:get, "http://api.verbumnovum.se/v1/bazs/1,2").to_return(body: JSON.dump(
+          "bazs" => [{ "id" => 1 }, { "id" => 2 }]
+        ))
+
+        resource = Resource.new({
+          "id" => 1,
+          "links" => {
+            "baz" => [1, 2]
+          }
+        })
+        assert resource.baz.present?
+      end
+
+      def test_blank_has_many_association
+        resource = Resource.new({
+          "id" => 1,
+          "links" => {
+            "baz" => []
+          }
+        })
+        assert_equal [], resource.baz
       end
     end
   end
