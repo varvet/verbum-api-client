@@ -13,7 +13,7 @@ module Verbum
         def find(id, params = {})
           if id.is_a?(Array)
             return [] if id.empty?
-            find(id.join(","))
+            Array(find(id.join(",")))
           elsif id.present?
             get("#{resource}/#{id}", params)
           end

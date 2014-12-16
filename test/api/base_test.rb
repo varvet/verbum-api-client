@@ -108,7 +108,7 @@ module Verbum
             "bar" => 1
           }
         })
-        assert resource.bar.present?
+        assert resource.bar.is_a?(Bar)
       end
 
       def test_blank_has_one_association
@@ -132,7 +132,21 @@ module Verbum
             "baz" => [1, 2]
           }
         })
-        assert resource.baz.present?
+        assert resource.baz.is_a?(Array)
+      end
+
+      def test_one_has_many_association
+        stub_request(:get, "http://api.verbumnovum.se/v1/bazs/1").to_return(body: JSON.dump(
+          "bazs" => { "id" => 1 }
+        ))
+
+        resource = Resource.new({
+          "id" => 1,
+          "links" => {
+            "baz" => [1]
+          }
+        })
+        assert resource.baz.is_a?(Array)
       end
 
       def test_blank_has_many_association
