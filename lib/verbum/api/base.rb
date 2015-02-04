@@ -98,6 +98,10 @@ module Verbum
       def href
         @data["href"]
       end
+
+      def as_json(options = nil)
+        @data
+      end
     end
   end
 end
