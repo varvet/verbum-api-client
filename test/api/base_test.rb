@@ -76,24 +76,29 @@ module Verbum
       end
 
       def test_id
-        resource = Resource.new({
+        resource = Resource.new(
           "id" => 1
-        })
+        )
         assert_equal 1, resource.id
       end
 
       def test_href
-        resource = Resource.new({
+        resource = Resource.new(
           "href" => "http://api.verbumnovum.se/v1/resources/1"
-        })
+        )
         assert_equal "http://api.verbumnovum.se/v1/resources/1", resource.href
       end
 
+      def test_as_json
+        data = { "id" => 1 }
+        assert_equal data, Resource.new(data).as_json
+      end
+
       def test_attribute
-        resource = Resource.new({
+        resource = Resource.new(
           "id" => 1,
           "foo" => "bar"
-        })
+        )
         assert_equal "bar", resource.foo
       end
 
@@ -102,22 +107,22 @@ module Verbum
           "bars" => { "id" => 1 }
         ))
 
-        resource = Resource.new({
+        resource = Resource.new(
           "id" => 1,
           "links" => {
             "bar" => 1
           }
-        })
+        )
         assert resource.bar.is_a?(Bar)
       end
 
       def test_blank_has_one_association
-        resource = Resource.new({
+        resource = Resource.new(
           "id" => 1,
           "links" => {
             "bar" => nil
           }
-        })
+        )
         assert_equal nil, resource.bar
       end
 
@@ -126,12 +131,12 @@ module Verbum
           "bazs" => [{ "id" => 1 }, { "id" => 2 }]
         ))
 
-        resource = Resource.new({
+        resource = Resource.new(
           "id" => 1,
           "links" => {
             "baz" => [1, 2]
           }
-        })
+        )
         assert resource.baz.is_a?(Array)
       end
 
@@ -140,23 +145,71 @@ module Verbum
           "bazs" => { "id" => 1 }
         ))
 
-        resource = Resource.new({
+        resource = Resource.new(
           "id" => 1,
           "links" => {
             "baz" => [1]
           }
-        })
+        )
         assert resource.baz.is_a?(Array)
       end
 
       def test_blank_has_many_association
-        resource = Resource.new({
+        resource = Resource.new(
           "id" => 1,
           "links" => {
             "baz" => []
           }
-        })
+        )
         assert_equal [], resource.baz
+      end
+
+      def test_count_links
+        resource = Resource.new(
+          "id" => 1,
+          "links" => {
+            "bar" => [1, 2]
+          }
+        )
+        assert_equal 2, resource.count_links(:bar)
+      end
+
+      def test_count_links_with_no_links
+        resource = Resource.new(
+          "id" => 1,
+          "links" => {
+            "bar" => []
+          }
+        )
+        assert_equal 0, resource.count_links(:bar)
+      end
+
+      def test_count_links_for_has_one_link
+        resource = Resource.new(
+          "id" => 1,
+          "links" => {
+            "bar" => 1
+          }
+        )
+        assert_equal 1, resource.count_links(:bar)
+      end
+
+      def test_count_links_for_has_one_link_with_no_link
+        resource = Resource.new(
+          "id" => 1,
+          "links" => {
+            "bar" => nil
+          }
+        )
+        assert_equal 0, resource.count_links(:bar)
+      end
+
+      def test_count_links_for_unknown_link
+        resource = Resource.new(
+          "id" => 1,
+          "links" => {}
+        )
+        assert_equal nil, resource.count_links(:bar)
       end
     end
   end

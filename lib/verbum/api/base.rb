@@ -61,9 +61,9 @@ module Verbum
             end
           )
         rescue Faraday::Error::TimeoutError
-          fail "Connection timed out"
+          raise "Connection timed out"
         rescue Faraday::Error::ConnectionFailed
-          fail "Connection failed"
+          raise "Connection failed"
         end
 
         def parse_response(response)
@@ -99,7 +99,13 @@ module Verbum
         @data["href"]
       end
 
-      def as_json(options = nil)
+      def count_links(association)
+        return unless @data["links"]
+        return unless @data["links"].key?(association.to_s)
+        Array(@data["links"][association.to_s]).length
+      end
+
+      def as_json(_options = nil)
         @data
       end
     end
