@@ -51,4 +51,10 @@ psalm.theme
 
 This will trigger additional queries to the verse and theme resources.
 
-### Contributing
+Psalms have some additional helper methods:
+
+```ruby
+psalm = Verbum::Api::Psalm.find(1)
+psalm.composers # fetches authorships of type composer
+psalm.lyricists # fetches authorships of type lyricist
+```
