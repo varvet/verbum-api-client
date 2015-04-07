@@ -1,112 +1,56 @@
 module Verbum
   module Api
     class Base
-      BASE_URL = "http://api.verbumnovum.se/v1"
-      TIMEOUT = 10
-      OPEN_TIMEOUT = 5
+      include Verbum::Api::Attributes
+      include Verbum::Api::Querying
 
       class << self
-        def all(params = {})
-          get(resource, params)
-        end
-
-        def find(id, params = {})
-          if id.is_a?(Array)
-            return [] if id.empty?
-            Array(find(id.join(",")))
-          elsif id.present?
-            get("#{resource}/#{id}", params)
-          end
-        end
-
-        protected
-
-        def connection
-          @connection ||= Faraday.new(url: BASE_URL) do |config|
-            config.adapter Faraday.default_adapter
-          end
-        end
-
         def resource
           name.demodulize.tableize
         end
 
-        def attributes(*attributes)
-          attributes.each do |attribute|
-            define_method(attribute) do
-              @data[attribute.to_s]
-            end
-          end
-        end
-
-        def associations(*associations)
-          associations.each do |association|
-            define_method(association) do
-              "verbum/api/#{association.to_s.singularize}".classify.constantize.find(
-                @data["links"][association.to_s]
-              )
-            end
-          end
-        end
-
-        private
-
-        def get(url, params)
-          parse_response(
-            connection.send(:get) do |request|
-              request.url(url)
-              request.params = params
-              request.options[:timeout] = TIMEOUT
-              request.options[:open_timeout] = OPEN_TIMEOUT
-            end
-          )
-        rescue Faraday::Error::TimeoutError
-          raise "Connection timed out"
-        rescue Faraday::Error::ConnectionFailed
-          raise "Connection failed"
-        end
-
-        def parse_response(response)
-          data = JSON.parse(response.body)[resource]
-
-          if data.is_a?(Array)
-            data.map { |data| resource_from_data(data) }
-          else
-            resource_from_data(data)
-          end
-        end
-
-        def resource_from_data(data)
+        def from_data(data, links = nil, linked = nil)
           resource_name = name.demodulize.underscore.to_sym
 
           if Verbum::Api.wrappers.key?(resource_name)
-            Verbum::Api.wrappers[resource_name].new(new(data))
+            Verbum::Api.wrappers[resource_name].new(new(data, links, linked))
           else
-            new(data)
+            new(data, links, linked)
           end
         end
       end
 
-      def initialize(data)
+      attr_reader :data, :links, :linked
+
+      def initialize(data, links = nil, linked = nil)
         @data = data
+        @links = links
+        @linked = linked
       end
 
       def id
-        @data["id"]
+        data["id"]
       end
 
       def href
-        @data["href"]
+        data["href"]
       end
 
       def count_links(association)
-        return unless @data["links"]
-        return unless @data["links"].key?(association.to_s)
-        Array(@data["links"][association.to_s]).length
+        return unless data["links"]
+        return unless data["links"].key?(association.to_s)
+        Array(data["links"][association.to_s]).length
       end
 
       def as_json(_options = nil)
-        @data
+        data
+      end
+
+      def reload!
+        object = self.class.find(id)
+        @data = object.data
+        @links = object.links
+        @linked = object.linked
       end
     end
   end
