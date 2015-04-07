@@ -1,6 +1,8 @@
 require "active_support/all"
 require "faraday"
 require "json"
+require "verbum/api/concerns/attributes"
+require "verbum/api/concerns/querying"
 require "verbum/api/base"
 require "verbum/api/author"
 require "verbum/api/authorship"
