@@ -26,29 +26,14 @@ module Verbum
 
         private
 
-        def connection
-          @connection ||= Faraday.new(url: BASE_URL, proxy: PROXY) do |config|
-            config.adapter Faraday.default_adapter
-          end
-        end
-
         def get(url, params = {})
           parse_response(
-            connection.send(:get) do |request|
-              request.url(url)
-              request.params = params
-              request.options[:timeout] = TIMEOUT
-              request.options[:open_timeout] = OPEN_TIMEOUT
-            end
+            APICache.get("#{BASE_URL}/#{url}")
           )
-        rescue Faraday::Error::TimeoutError
-          raise "Connection timed out"
-        rescue Faraday::Error::ConnectionFailed
-          raise "Connection failed"
         end
 
         def parse_response(response)
-          parsed_response = JSON.parse(response.body)
+          parsed_response = JSON.parse(response)
 
           if parsed_response[resource].is_a?(Array)
             parsed_response[resource].map do |data|
