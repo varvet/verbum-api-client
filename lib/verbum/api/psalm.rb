@@ -1,7 +1,7 @@
 module Verbum
   module Api
     class Psalm < Base
-      attributes :title, :number, :title_with_number, :addition, :note_sheet
+      attributes :title, :number, :title_with_number, :addition, :note_sheet, :soundcloud_stream_url
       associations :authors, :authorships, :tags, :theme, :verses
 
       def composers
