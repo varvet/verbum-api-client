@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["jens.ljungblad@gmail.com"]
   spec.homepage      = "https://github.com/varvet/verbum-api-client"
   spec.summary       = "Ruby client for the Verbum API"
-  spec.description   = "Ruby client for the Verbum API"
+  spec.description   = "Ruby client for the Verbum API used by other Verbum projects"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "activesupport", "~> 4.1"
-  spec.add_dependency "faraday", "~> 0.9.0"
+  spec.add_dependency "faraday", "~> 0.9", ">= 0.9.0"
 
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
