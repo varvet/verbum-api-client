@@ -15,7 +15,9 @@ require "verbum/api/version"
 module Verbum
   module Api
     mattr_accessor :wrappers
+    mattr_accessor :base_url
     self.wrappers = {}
+    self.base_url = "http://api.verbumnovum.se/v1"
 
     def self.configure
       yield self

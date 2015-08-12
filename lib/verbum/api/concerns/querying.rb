@@ -1,7 +1,6 @@
 module Verbum
   module Api
     module Querying
-      BASE_URL = "http://api.verbumnovum.se/v1"
       TIMEOUT = 10
       OPEN_TIMEOUT = 5
       PROXY = nil
@@ -27,7 +26,7 @@ module Verbum
         private
 
         def connection
-          @connection ||= Faraday.new(url: BASE_URL, proxy: PROXY) do |config|
+          @connection ||= Faraday.new(url: Verbum::Api.base_url, proxy: PROXY) do |config|
             config.adapter Faraday.default_adapter
           end
         end
