@@ -1,5 +1,11 @@
 module Verbum
   module Api
+    module Error
+      class ConnectionTimedOut < RuntimeError; end
+      class ConnectionFailed < RuntimeError; end
+      class NotFound < RuntimeError; end
+    end
+
     module Querying
       TIMEOUT = 10
       OPEN_TIMEOUT = 5
@@ -32,18 +38,22 @@ module Verbum
         end
 
         def get(url, params = {})
-          parse_response(
-            connection.send(:get) do |request|
-              request.url(url)
-              request.params = params
-              request.options[:timeout] = TIMEOUT
-              request.options[:open_timeout] = OPEN_TIMEOUT
-            end
-          )
+          response = connection.send(:get) do |request|
+            request.url(url)
+            request.params = params
+            request.options[:timeout] = TIMEOUT
+            request.options[:open_timeout] = OPEN_TIMEOUT
+          end
+          case response.status
+          when 404
+            fail Error::NotFound
+          when 200
+            parse_response response
+          end
         rescue Faraday::Error::TimeoutError
-          raise "Connection timed out"
+          raise Error::ConnectionTimedOut
         rescue Faraday::Error::ConnectionFailed
-          raise "Connection failed"
+          raise Error::ConnectionFailed
         end
 
         def parse_response(response)
