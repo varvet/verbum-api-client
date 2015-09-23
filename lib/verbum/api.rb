@@ -17,7 +17,7 @@ module Verbum
     mattr_accessor :wrappers
     mattr_accessor :base_url
     self.wrappers = {}
-    self.base_url = "http://api.verbumnovum.se/v1"
+    self.base_url = "https://api.verbumnovum.se/v1"
 
     def self.configure
       yield self
