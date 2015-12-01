@@ -17,15 +17,17 @@ module Verbum
 
       module ClassMethods
         def all(params = {})
-          get(resource, params)
+          merged_params = params.merge(Verbum::Api.default_parameters)
+          get(resource, merged_params)
         end
 
         def find(id, params = {})
+          merged_params = params.merge(Verbum::Api.default_parameters)
           if id.is_a?(Array)
             return [] if id.empty?
-            Array(find(id.join(","), params))
+            Array(find(id.join(","), merged_params))
           elsif id.present?
-            get("#{resource}/#{id}", params)
+            get("#{resource}/#{id}", merged_params)
           end
         end
 
