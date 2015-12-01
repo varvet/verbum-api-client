@@ -15,13 +15,13 @@ module Verbum
       def setup
         @resources = [{ "id" => 1 }, { "id" => 2 }, { "id" => 3 }]
 
-        stub_request(:get, "http://api.verbumnovum.se/v1/resources").to_return(body: JSON.dump(
+        stub_request(:get, "https://api.verbumnovum.se/v1/resources").to_return(body: JSON.dump(
           "resources" => [@resources[0], @resources[1], @resources[2]]
         ))
-        stub_request(:get, "http://api.verbumnovum.se/v1/resources/1").to_return(body: JSON.dump(
+        stub_request(:get, "https://api.verbumnovum.se/v1/resources/1").to_return(body: JSON.dump(
           "resources" => @resources[0]
         ))
-        stub_request(:get, "http://api.verbumnovum.se/v1/resources/1,2").to_return(body: JSON.dump(
+        stub_request(:get, "https://api.verbumnovum.se/v1/resources/1,2").to_return(body: JSON.dump(
           "resources" => [@resources[0], @resources[1]]
         ))
       end
@@ -103,7 +103,7 @@ module Verbum
       end
 
       def test_has_one_association
-        stub_request(:get, "http://api.verbumnovum.se/v1/bars/1").to_return(body: JSON.dump(
+        stub_request(:get, "https://api.verbumnovum.se/v1/bars/1").to_return(body: JSON.dump(
           "bars" => { "id" => 1 }
         ))
 
@@ -127,7 +127,7 @@ module Verbum
       end
 
       def test_has_many_association
-        stub_request(:get, "http://api.verbumnovum.se/v1/bazs/1,2").to_return(body: JSON.dump(
+        stub_request(:get, "https://api.verbumnovum.se/v1/bazs/1,2").to_return(body: JSON.dump(
           "bazs" => [{ "id" => 1 }, { "id" => 2 }]
         ))
 
@@ -141,7 +141,7 @@ module Verbum
       end
 
       def test_one_has_many_association
-        stub_request(:get, "http://api.verbumnovum.se/v1/bazs/1").to_return(body: JSON.dump(
+        stub_request(:get, "https://api.verbumnovum.se/v1/bazs/1").to_return(body: JSON.dump(
           "bazs" => { "id" => 1 }
         ))
 
