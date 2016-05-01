@@ -11,6 +11,10 @@ module Verbum
       def lyricists
         @lyricists ||= authorships.group_by(&:context)["lyrics"] || []
       end
+
+      def refrainists
+        @refrainists ||= authorships.group_by(&:context)["refrain"] || []
+      end
     end
   end
 end

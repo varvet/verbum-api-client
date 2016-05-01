@@ -9,23 +9,24 @@ module Verbum
           name.demodulize.tableize
         end
 
-        def from_data(data, links = nil, linked = nil)
+        def from_data(data, links = nil, linked = nil, meta = nil)
           resource_name = name.demodulize.underscore.to_sym
 
           if Verbum::Api.wrappers.key?(resource_name)
-            Verbum::Api.wrappers[resource_name].new(new(data, links, linked))
+            Verbum::Api.wrappers[resource_name].new(new(data, links, linked, meta))
           else
-            new(data, links, linked)
+            new(data, links, linked, meta)
           end
         end
       end
 
-      attr_reader :data, :links, :linked
+      attr_reader :data, :links, :linked, :meta
 
-      def initialize(data, links = nil, linked = nil)
+      def initialize(data, links = nil, linked = nil, meta = nil)
         @data = data
         @links = links
         @linked = linked
+        @meta = meta
       end
 
       def id
@@ -51,6 +52,7 @@ module Verbum
         @data = object.data
         @links = object.links
         @linked = object.linked
+        @meta = object.meta
       end
     end
   end

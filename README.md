@@ -57,4 +57,5 @@ Psalms have some additional helper methods:
 psalm = Verbum::Api::Psalm.find(1)
 psalm.composers # fetches authorships of type composer
 psalm.lyricists # fetches authorships of type lyricist
+psalm.refrainists # fetches authorships of type refrain (Omkväde)
 ```
