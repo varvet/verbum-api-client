@@ -60,10 +60,9 @@ module Verbum
 
         def parse_response(response)
           parsed_response = JSON.parse(response.body)
-
           if parsed_response[resource].is_a?(Array)
             parsed_response[resource].map do |data|
-              from_data(data, parsed_response["links"], parsed_response["linked"])
+              from_data(data, parsed_response["links"], parsed_response["linked"], parsed_response["meta"])
             end
           else
             from_data(parsed_response[resource], parsed_response["links"], parsed_response["linked"])
