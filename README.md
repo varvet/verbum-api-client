@@ -58,3 +58,33 @@ psalm.composers # fetches authorships of type composer
 psalm.lyricists # fetches authorships of type lyricist
 psalm.refrainists # fetches authorships of type refrainist (Omkväde)
 ```
+
+### Request caching
+
+Configure a ActiveSupport::Cache compatible store to cache requests.
+
+```ruby
+  Verbum::Api.cache = ActiveSupport::Cache.lookup_store(:memory_store)
+```
+
+If you're user Rails you can user Rails cache for connivance
+
+```ruby
+  Verbum::Api.cache = Rails.cache
+```
+
+To define cache expiry
+
+```ruby
+  Verbum::Api.cache_expiry = 45.minutes
+```
+
+Optionally you can set an expiry padding, in order to no have
+every resource time out at once.
+
+```ruby
+  Verbum::Api.cache_expiry_padding = 15.minutes
+```
+
+Using the two examples above, each cached request will expire randomly in
+between 45 minutes and 1 hour.

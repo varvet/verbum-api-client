@@ -2,6 +2,7 @@ module Verbum
   module Api
     class Base
       include Verbum::Api::Attributes
+      extend Verbum::Api::Caching
       include Verbum::Api::Querying
 
       class << self

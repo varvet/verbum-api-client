@@ -32,7 +32,6 @@ module Verbum
         end
 
         private
-
         def connection
           @connection ||= Faraday.new(url: Verbum::Api.base_url, proxy: PROXY) do |config|
             config.adapter Faraday.default_adapter
@@ -40,17 +39,20 @@ module Verbum
         end
 
         def get(url, params = {})
-          response = connection.send(:get) do |request|
-            request.url(url)
-            request.params = params
-            request.options[:timeout] = TIMEOUT
-            request.options[:open_timeout] = OPEN_TIMEOUT
-          end
-          case response.status
-          when 404
-            fail Error::NotFound
-          when 200
-            parse_response response
+          with_caching(url, params) do
+            response = connection.send(:get) do |request|
+              request.url(url)
+              request.params = params
+              request.options[:timeout] = TIMEOUT
+              request.options[:open_timeout] = OPEN_TIMEOUT
+            end
+
+            case response.status
+            when 404
+              fail Error::NotFound
+            when 200
+              parse_response response
+            end
           end
         rescue Faraday::Error::TimeoutError
           raise Error::ConnectionTimedOut
