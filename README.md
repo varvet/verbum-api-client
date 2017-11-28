@@ -76,7 +76,7 @@ If you're user Rails you can user Rails cache for connivance
 To define cache expiry
 
 ```ruby
-  Verbum::Api.cache_expiry = 45.minutes
+  Verbum::Api.cache_expires_in = 45.minutes
 ```
 
 Optionally you can set an expiry padding, in order to no have
