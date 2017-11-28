@@ -14,9 +14,10 @@ Gem::Specification.new do |spec|
   spec.description   = "Ruby client for the Verbum API used by other Verbum projects"
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files`.split($/)
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  spec.files         = `git ls-files -z`.split("\x0").reject do |f|
+    f.match(/\A(\.|test)/)
+  end
+
   spec.require_paths = ["lib"]
 
   spec.add_dependency "activesupport", ">= 4.1"
