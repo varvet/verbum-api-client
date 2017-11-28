@@ -26,7 +26,7 @@ module Verbum
         ))
       end
 
-      def test_get_all_resources
+      def test_get_all_resources_with_caching
         resources = Resource.all
 
         assert_instance_of Array, resources
@@ -123,7 +123,7 @@ module Verbum
             "bar" => nil
           }
         )
-        assert_equal nil, resource.bar
+        assert_nil resource.bar
       end
 
       def test_has_many_association
@@ -209,7 +209,7 @@ module Verbum
           "id" => 1,
           "links" => {}
         )
-        assert_equal nil, resource.count_links(:bar)
+        assert_nil resource.count_links(:bar)
       end
     end
   end
