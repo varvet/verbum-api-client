@@ -1,7 +1,5 @@
 # Verbum API client
 
-![Coverage](http://varvet-badger.herokuapp.com/badges/varvet-verbum-api-client/coverage)
-
 A simple Ruby client for the Verbum API.
 
 ### Usage
