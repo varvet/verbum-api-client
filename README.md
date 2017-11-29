@@ -65,13 +65,13 @@ Configure a ActiveSupport::Cache compatible store to cache requests.
   Verbum::Api.cache = ActiveSupport::Cache.lookup_store(:memory_store)
 ```
 
-If you're user Rails you can user Rails cache for connivance
+If you're using Rails you can use Rails' cache for convenience:
 
 ```ruby
   Verbum::Api.cache = Rails.cache
 ```
 
-To define cache expiry
+To define cache expiry:
 
 ```ruby
   Verbum::Api.cache_expires_in = 45.minutes
